@@ -3,6 +3,7 @@ package service
 import (
   "context"
   "errors"
+  "fmt"
   pb "./../../pb"
 )
 
@@ -12,6 +13,7 @@ func (s *SearchService) Search(ctx context.Context, request *pb.SearchRequest) (
   if request.Query == "" {
     return nil, errors.New("No query is passed")
   }
+  fmt.Printf("result: %#v \n", request)
   return &pb.SearchResponse {
     Result: request.Query + " is passed",
   }, nil
